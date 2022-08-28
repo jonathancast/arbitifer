@@ -33,3 +33,7 @@ This just documents what I did to create the Arbitifer Arbitifer database.
       ----+------------------------------------------------------------------------------
         1 | As a user, I want to see a list of all tickets, so I can see what to work on
       (1 row)
+
+* I made the initial DB export via
+
+      $ pg_dump -h $hostname -U arbitifer_arbitifer arbitifer_arbitifer > dbexport.sql
