@@ -15,19 +15,19 @@ This just documents what I did to create the Arbitifer Arbitifer database.
       Password for user arbitifer_arbitifer: 
       SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
       You are now connected to database "arbitifer_arbitifer" as user "arbitifer_arbitifer".
-      
+
       arbitifer_arbitifer=> create sequence seq_ticket_no;
       CREATE SEQUENCE
-      
+
       arbitifer_arbitifer=> create table tickets (
           id integer primary key default nextval('seq_ticket_no'),
           story text not null
       );
       CREATE TABLE
-      
+
       arbitifer_arbitifer=> insert into tickets (story) values ('As a user, I want to see a list of all tickets, so I can see what to work on');
       INSERT 0 1
-      
+
       arbitifer_arbitifer=> select * from tickets;
        id |                                    story                                     
       ----+------------------------------------------------------------------------------
@@ -37,3 +37,11 @@ This just documents what I did to create the Arbitifer Arbitifer database.
 * I made the initial DB export via
 
       $ pg_dump -h $hostname -U arbitifer_arbitifer arbitifer_arbitifer > dbexport.sql
+
+Random LinkedIn page  says:
+
+By default, `ng build --prod` puts all produced files in the dist directory. We want those files in the `src/main/resources/META-INF/resources` directory. You can change that in the `angular.json` file:
+
+    "configurations": {
+        "production": {
+            "outputPath": "../resources/META-INF/resources",
