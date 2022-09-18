@@ -1,0 +1,23 @@
+:host {
+    display: table;
+    border: 1px solid black;
+    height: 18em;
+    width: 30em;
+    padding: 0.5em;
+    background-color: cornsilk;
+}
+
+.ticket-title {
+    display: table-row;
+}
+
+.ticket-id {
+    display: table-cell;
+    padding-right: 0.5em;
+    min-width: 1em;
+}
+
+.ticket-story {
+    display: table-cell;
+    text-align: justify;
+}
