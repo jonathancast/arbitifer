@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArbitiferCardComponent } from './arbitifer-card.component';
+import { CardComponent } from './card.component';
 
-describe('ArbitiferCardComponent', () => {
-  let component: ArbitiferCardComponent;
-  let fixture: ComponentFixture<ArbitiferCardComponent>;
+describe('CardComponent', () => {
+  let component: CardComponent;
+  let fixture: ComponentFixture<CardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArbitiferCardComponent ]
+      declarations: [ CardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ArbitiferCardComponent);
+    fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

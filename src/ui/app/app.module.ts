@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TicketsComponent } from './tickets/tickets.component';
-import { ArbitiferCardComponent } from './arbitifer-card/arbitifer-card.component';
+import { TicketsComponent } from './pages/tickets/tickets.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TicketsComponent,
-    ArbitiferCardComponent
+    CardComponent
   ],
   imports: [
     BrowserModule,

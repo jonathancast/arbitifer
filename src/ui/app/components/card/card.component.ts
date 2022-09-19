@@ -3,10 +3,10 @@ import { Ticket } from 'app/ticket.model';
 
 @Component({
   selector: 'arbitifer-card',
-  templateUrl: './arbitifer-card.component.html',
-  styleUrls: ['./arbitifer-card.component.scss']
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss']
 })
-export class ArbitiferCardComponent implements OnInit {
+export class CardComponent implements OnInit {
     @Input()
     public ticket! : Ticket;
 
