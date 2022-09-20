@@ -14,6 +14,10 @@ describe('CardComponent', () => {
 
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
+    component.ticket = {
+        id: 1,
+        story: "As a user, I want to see a list of all tickets, so I can see what to work on",
+    };
     fixture.detectChanges();
   });
 
