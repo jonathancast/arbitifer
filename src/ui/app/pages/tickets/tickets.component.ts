@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ticketsURL } from 'app/api';
 
 import { Ticket } from 'app/ticket.model';
 
@@ -8,12 +10,12 @@ import { Ticket } from 'app/ticket.model';
   styleUrls: ['./tickets.component.scss']
 })
 export class TicketsComponent implements OnInit {
-    public tickets : Ticket[];
+    public tickets! : Ticket[];
 
-    constructor() {
-        this.tickets = [
-            { id: 1, story: "As a user, I want to see a list of all tickets, so I can see what to work on", },
-        ];
+    constructor(httpClient : HttpClient) {
+        httpClient.get<Ticket[]>(ticketsURL).subscribe(tickets => {
+            this.tickets = tickets;
+        });
     }
 
     ngOnInit(): void {
