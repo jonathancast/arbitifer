@@ -16,6 +16,10 @@
     <quarkus.platform.version>2.11.3.Final</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
+    <database.skip>true</database.skip>
+    <database.hostname>127.0.0.1</database.hostname>
+    <database.username>DATABASE USER</database.username>
+    <database.password>DATABASE PASSWORD</database.password>
   </properties>
 
   <dependencyManagement>
@@ -31,7 +35,7 @@
   </dependencyManagement>
 
   <dependencies>
-  	<!-- §section Quarkus -->
+    <!-- §section Quarkus -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-reactive</artifactId>
@@ -55,6 +59,25 @@
         <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
     </dependency>
 
+    <!-- §section jOOQ -->
+    <dependency>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq</artifactId>
+        <version>3.17.4</version>
+    </dependency>
+
+    <!-- §subsection jOOQ code generator -->
+    <dependency>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-meta</artifactId>
+        <version>3.17.4</version>
+    </dependency>
+    <dependency>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen</artifactId>
+          <version>3.17.4</version>
+    </dependency>
+
     <!-- §section Language tools -->
     <dependency>
         <groupId>org.projectlombok</groupId>
@@ -62,7 +85,7 @@
         <version>1.18.24</version>
         <scope>provided</scope>
     </dependency>
-    
+
     <!-- §section jUnit and Mockito -->
     <dependency>
         <groupId>org.mockito</groupId>
@@ -124,6 +147,85 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <!-- jOOQ Open Source Edition -->
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen-maven</artifactId>
+        <version>3.10.8</version>
+
+        <executions>
+          <execution>
+            <id>jooq-codegen</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            </execution>
+        </executions>
+
+        <configuration>
+          <skip>${database.skip}</skip>
+
+          <!-- Configure the database connection here -->
+          <jdbc>
+            <driver>org.postgresql.Driver</driver>
+            <url>jdbc:postgresql://${database.hostname}/</url>
+            <user>${database.username}</user>
+            <password>${database.password}</password>
+          </jdbc>
+
+          <generator>
+            <database>
+              <name>org.jooq.util.postgres.PostgresDatabase</name>
+              <includes>.*</includes>
+              <excludes>
+                audit_.*
+              </excludes>
+              <inputSchema>public</inputSchema>
+            </database>
+            <generate/>
+
+            <target>
+              <!-- The destination package of the generated classes (within the
+                   destination directory)
+
+                   jOOQ will append the schema name to this package
+                   e.g. arbitifer.datasource.database.public_ -->
+              <packageName>arbitifer.datasource.database</packageName>
+
+              <!-- The destination directory of the generated classes -->
+              <directory>src/main/java</directory>
+            </target>
+          </generator>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+          </dependency>
+          <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>javax.activation-api</artifactId>
+            <version>1.2.0</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>4.0.1</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.1</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>

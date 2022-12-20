@@ -4,6 +4,19 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+## Running the code generator
+
+Code generation via jOOQ is not enabled by default.
+
+You need to create your dev (or production) database manually,
+and run the file `sql/schema.sql` in it to create the database.
+
+To run the code generator before your first compile (or after changin the schema),
+you can run
+```shell script
+mvn generate-sources -Ddatabase.hostname=$hostname -Ddatabase.username=$username -Ddatabase.password=$password -Ddatabase.skip=false
+```
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
