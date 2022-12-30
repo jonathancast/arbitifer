@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Ticket {
+public class TicketModel {
     private final int id;
     private final String story;
 }

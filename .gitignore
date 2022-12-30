@@ -86,4 +86,6 @@ testem.log
 Thumbs.db
 META-INF
 /*_db
-src/main/java/arbitifer/datasource
+src/main/java/arbitifer/datasource/database
+config
+generate-sources

@@ -58,6 +58,15 @@
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
     </dependency>
+    <dependency>
+        <groupId>io.quarkiverse.jooq</groupId>
+        <artifactId>quarkus-jooq</artifactId>
+        <version>0.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-jdbc-postgresql</artifactId>
+    </dependency>
 
     <!-- §section jOOQ -->
     <dependency>
@@ -75,7 +84,14 @@
     <dependency>
         <groupId>org.jooq</groupId>
         <artifactId>jooq-codegen</artifactId>
-          <version>3.17.4</version>
+        <version>3.17.4</version>
+    </dependency>
+
+    <!-- §section PostgreSQL -->
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.5.1</version>
     </dependency>
 
     <!-- §section Language tools -->
@@ -219,11 +235,6 @@
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
             <version>2.3.1</version>
-          </dependency>
-          <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.5.1</version>
           </dependency>
         </dependencies>
       </plugin>
